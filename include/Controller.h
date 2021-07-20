@@ -18,7 +18,7 @@ void warn(int server, int position);
 **/ 
 void tran(int server_1, int server_2);
 /**  
-*  A execu ̧ca ̃o de um comando de ERRO identifica que algo estranho ocorreu na mega- net.  
+*  A execução de um comando de ERRO identifica que algo estranho ocorreu na mega- net.  
 * Quando isso ocorre, deve-se imprimir no terminal a mensagem ‘ERRO <S>’ e todo o conteu ́do do buffer do servidor ‘S’
 **/ 
 void erro(int server_1); 
