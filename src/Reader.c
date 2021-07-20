@@ -4,7 +4,8 @@
 void reader(char *FileName) 
 { 
   int count_lines;   
-  int Servers; 
+  int Servers;   
+  
   char pre_path[] =  "./src/"; 
   char *path = malloc(strlen(pre_path) + strlen(FileName) + 1);   
   strcat(path,pre_path); 
@@ -23,14 +24,27 @@ void reader(char *FileName)
   
   while(fgets(buff,MAX_CHAR_COMMAND,file)) 
   {  
-    printf("%s\n",buff); 
+    //puts(buff);
     
     if(count_lines == 0){ 
-      // how much servers 
-      
+    
+      Servers = atoi(buff); 
+      printf("Servers: %d\n",Servers);
+    
+    } 
+    else{ 
+
     }  
 
+    getsCommands(buff);
     count_lines++;  
-  } 
+  }  
+
   fclose(file);
 } 
+
+void getsCommands(char *buff){ 
+  while(strcmp(buff,"\n")!= 0){ 
+    printf("%c",*buff);
+  }
+}
