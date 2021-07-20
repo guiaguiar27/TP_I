@@ -3,7 +3,8 @@
 
 void reader(char *FileName) 
 { 
-  int count_lines;  
+  int count_lines;   
+  int Servers; 
   char pre_path[] =  "./src/"; 
   char *path = malloc(strlen(pre_path) + strlen(FileName) + 1);   
   strcat(path,pre_path); 
@@ -26,9 +27,10 @@ void reader(char *FileName)
     
     if(count_lines == 0){ 
       // how much servers 
+      
     }  
 
     count_lines++;  
   } 
   fclose(file);
-}
+} 
