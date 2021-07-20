@@ -32,4 +32,6 @@ void send();
   Além disso, deve-se também imprimir no terminal,  
  o conteúdo do buffer de TODOS os servidores (a impressão de um buffer individual deve ser feita utilizando política FIFO).
 **/ 
-void flush();
+void flush(); 
+
+void verify(char *command);
