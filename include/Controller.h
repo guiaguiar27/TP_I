@@ -1,6 +1,7 @@
 #include <stdio.h> 
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> 
+#define DEBUG 1 
 /** 
 * controller functions 
 **/   
@@ -33,5 +34,3 @@ void send();
  o conteúdo do buffer de TODOS os servidores (a impressão de um buffer individual deve ser feita utilizando política FIFO).
 **/ 
 void flush(); 
-
-void verify(char *command);

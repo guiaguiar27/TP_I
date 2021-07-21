@@ -41,13 +41,45 @@ void reader(char *FileName)
   fclose(file);
 } 
 
-void getsCommands(char *buff){   
-  char tokenSpace =  " "; 
-  char tokenQuote =  "\"";
+void getsCommands(char *buff){ 
+  int S, S2, I,aux; 
+  short flag = 0;  
+
+  char *tokenSpace =  " "; 
+  char *tokenQuote =  "\"";
   char *slot = malloc(sizeof(char)); 
-  slot = strtok(buff,tokenSpace); 
+  char *data = malloc(sizeof(char)); 
+  char *command = malloc(sizeof(char)); 
+
+
+  slot = strsep(&buff,tokenSpace);  
+  strcpy(command,slot);
+  if(strcmp(command,"INFO") ==0){  
+    S = atoi(strsep(&buff,tokenSpace));  
+    puts(buff); 
+    info(S, buff);
+  }  
+  
+  else if(strcmp(command,"WARN") ==0){ 
+
+  }  
+  else if(strcmp(command,"TRAN") == 0){ 
+
+  } 
+  else if(strcmp(command,"ERRO") == 0){ 
+
+  } 
+  else if(strcmp(command,"SEND") == 0){ 
+
+  } 
+  else if(strcmp(command,"FLUSH") == 0){ 
+
+  }  
+  else if(strcmp(command,"INFO") == 0){ 
+
+  } 
   while(slot != NULL){  
+    slot = strtok(NULL,tokenSpace); 
     
-    slot = strtok(NULL,tokenSpace);
   }
 }
