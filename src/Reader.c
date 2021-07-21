@@ -65,20 +65,23 @@ void getsCommands(char *buff){
     I = atoi(strsep(&buff,tokenSpace)); 
     #if (DEBUG) 
       printf("S: %d, I: %d\n",S,I); 
-    #endif
+    #endif 
+    warn(S,I); 
   }  
   else if(strcmp(command,"TRAN") == 0){ 
     S = atoi(strsep(&buff,tokenSpace));   
     S2 = atoi(strsep(&buff,tokenSpace)); 
     #if (DEBUG) 
       printf("S: %d, S2: %d\n",S,S2); 
-    #endif
+    #endif 
+    tran(S,S2);
   } 
   else if(strcmp(command,"ERRO") == 0){ 
     S = atoi(strsep(&buff,tokenSpace));   
     #if (DEBUG) 
       printf("S: %d\n",S); 
-    #endif
+    #endif 
+    erro(S);
   } 
   else if(strcmp(command,"SEND") == 0){ 
 

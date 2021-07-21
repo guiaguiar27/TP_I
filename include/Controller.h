@@ -7,11 +7,11 @@
 **/   
 
 /**  
-* Ao executar este comando, o conteu ́do da varia ́vel ‘DADOS’ deve ser inserido no buffer do servidor ‘S’ 
+* Ao executar este comando, o conteúddo da variável ‘DADOS’ deve ser inserido no buffer do servidor ‘S’ 
 **/ 
 void info(int server, char *data);  
 /**  
-* Um comando ‘WARN’  ́e executado pelo controlador central quando  ́e detectada uma tentativa de hacking dos dados.
+* Um comando ‘WARN’  é executado pelo controlador central quando  é  detectada uma tentativa de hacking dos dados.
 **/ 
 void warn(int server, int position); 
 /**  
@@ -20,7 +20,7 @@ void warn(int server, int position);
 void tran(int server_1, int server_2);
 /**  
 *  A execução de um comando de ERRO identifica que algo estranho ocorreu na mega- net.  
-* Quando isso ocorre, deve-se imprimir no terminal a mensagem ‘ERRO <S>’ e todo o conteu ́do do buffer do servidor ‘S’
+* Quando isso ocorre, deve-se imprimir no terminal a mensagem ‘ERRO <S>’ e todo o conteúdo do buffer do servidor ‘S’
 **/ 
 void erro(int server_1); 
 /**  
