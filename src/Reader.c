@@ -31,9 +31,9 @@ void reader(char *FileName)
       printf("Servers: %d\n",Servers);
     
     } 
-    if(count_lines == 1){ 
-        getsCommands(buff);
-    }  
+    else{
+      getsCommands(buff);
+    }
 
     count_lines++;  
   }  
@@ -59,15 +59,26 @@ void getsCommands(char *buff){
     puts(buff); 
     info(S, buff);
   }  
-  
-  else if(strcmp(command,"WARN") ==0){ 
 
+  else if(strcmp(command,"WARN") ==0){ 
+    S = atoi(strsep(&buff,tokenSpace));  
+    I = atoi(strsep(&buff,tokenSpace)); 
+    #if (DEBUG) 
+      printf("S: %d, I: %d\n",S,I); 
+    #endif
   }  
   else if(strcmp(command,"TRAN") == 0){ 
-
+    S = atoi(strsep(&buff,tokenSpace));   
+    S2 = atoi(strsep(&buff,tokenSpace)); 
+    #if (DEBUG) 
+      printf("S: %d, S2: %d\n",S,S2); 
+    #endif
   } 
   else if(strcmp(command,"ERRO") == 0){ 
-
+    S = atoi(strsep(&buff,tokenSpace));   
+    #if (DEBUG) 
+      printf("S: %d\n",S); 
+    #endif
   } 
   else if(strcmp(command,"SEND") == 0){ 
 
@@ -75,11 +86,5 @@ void getsCommands(char *buff){
   else if(strcmp(command,"FLUSH") == 0){ 
 
   }  
-  else if(strcmp(command,"INFO") == 0){ 
-
-  } 
-  while(slot != NULL){  
-    slot = strtok(NULL,tokenSpace); 
-    
-  }
+  
 }
