@@ -11,12 +11,14 @@ typedef struct Item {
 }Item; 
 typedef struct cell{ 
     Item item; 
-    cell *next;
+    cell *next; 
+    int Position;
 } cell; 
 typedef struct Buffer{  
     int id; 
     cell *head; 
-    cell *tail;  
+    cell *tail;   
+    int size; 
 }Buffer;
 
 /** 
@@ -26,4 +28,4 @@ void empity_buffer(Buffer *b, int id);
 
 void enqueue_buffer(Buffer *b, char *data); 
 
-void dequeue_buffer(Buffer *b); 
+Item  *dequeue(Buffer *b);
