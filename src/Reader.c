@@ -56,7 +56,9 @@ void getsCommands(char *buff){
   strcpy(command,slot);
   if(strcmp(command,"INFO") ==0){  
     S = atoi(strsep(&buff,tokenSpace));  
-    puts(buff); 
+    #ifdef DEBBUG
+      puts(buff); 
+    #endif // DEBBUG
     info(S, buff);
   }  
 
@@ -83,11 +85,16 @@ void getsCommands(char *buff){
     #endif 
     erro(S);
   } 
-  else if(strcmp(command,"SEND") == 0){ 
+  else if(strcmp(command,"SEND") == 0){  
+    #if (DEBUG) 
+      printf("Send\n"); 
+    #endif 
 
   } 
   else if(strcmp(command,"FLUSH") == 0){ 
-
+    #if (DEBUG) 
+      printf("Flush\n"); 
+    #endif 
   }  
   
 }
