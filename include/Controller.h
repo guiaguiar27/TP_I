@@ -1,7 +1,7 @@
 #include <stdio.h> 
 #include <stdlib.h>
 #include <string.h> 
-#define DEBUG 0
+#define DEBUG 
 /** 
 * controller functions 
 **/   

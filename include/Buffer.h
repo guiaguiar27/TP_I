@@ -1,3 +1,5 @@
+#include <stdio.h> 
+#include <stdlib.h> 
 
 /**  
  * \file include/Buffer.h 
@@ -11,16 +13,17 @@ typedef struct cell{
     Item item; 
     cell *next;
 } cell; 
-typedef struct Buffer{ 
+typedef struct Buffer{  
+    int id; 
     cell *head; 
     cell *tail;  
-}cell;
+}Buffer;
 
 /** 
  * \brief Buffer implementation.
  */ 
-void empity_buffer(Buffer *b);
+void empity_buffer(Buffer *b, int id);
 
-void enqueue_buffer(Buffer *b); 
+void enqueue_buffer(Buffer *b, char *data); 
 
 void dequeue_buffer(Buffer *b); 
