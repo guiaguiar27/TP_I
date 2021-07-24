@@ -1,16 +1,19 @@
- #include "Buffer.h" 
+#include "../include/Server.h" 
 
-typedef struct Item{ 
-    Buffer *Buffer;  
-}Item;    
 
-typedef struct cell{ 
-    Item *item;  
-    cell *next; 
-}cell;   
+void init_server(Server *S, int num){ 
+    for(int i = 0; i < num; i++){ 
+        S->node = (Tpointer)malloc(sizeof(Tcell)); 
+        S->Server_id = i;  
+        S->node->next = NULL;  
+    }
 
-typedef struct Server{ 
-    cell *first, *last; 
-    
-}Server; 
+}
 
+void add_buffer(Server *S, Buffer new_buffer){ 
+    S->node->Item.Intern_Buffer = new_buffer; 
+    S->node->next = NULL;     
+
+}
+
+Buffer *remove_buffer(Server *S);

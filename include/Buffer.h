@@ -6,20 +6,26 @@
  * \brief Buffer struct and Buffer class implementation. 
  **/ 
 
-typedef struct Item {
+typedef struct Item{
     char *data;
-}Item; 
-typedef struct cell{ 
+}Item;  
+
+typedef struct Fcell *Fpointer;  
+typedef struct Fcell{ 
     Item item; 
-    cell *next; 
+    Fpointer next; 
     int Position;
-} cell; 
-typedef struct Buffer{  
+}Fcell;  
+
+typedef struct {  
     int id; 
-    cell *head; 
-    cell *tail;   
+    Fpointer head; 
+    Fpointer tail;   
     int size; 
-}Buffer;
+}Buffer;   
+
+
+
 
 /** 
  * \brief Buffer implementation.

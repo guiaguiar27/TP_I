@@ -1,7 +1,8 @@
 #include <stdio.h> 
 #include <stdlib.h>
-#include <string.h> 
-#define DEBUG 
+#include <string.h>  
+#include "Server.h" 
+#define DEBUG 0
 /** 
 * controller functions 
 **/   
@@ -33,4 +34,6 @@ void send();
   Além disso, deve-se também imprimir no terminal,  
  o conteúdo do buffer de TODOS os servidores (a impressão de um buffer individual deve ser feita utilizando política FIFO).
 **/ 
-void flush(); 
+void flush();  
+
+void init_servers(Server *S, int num);

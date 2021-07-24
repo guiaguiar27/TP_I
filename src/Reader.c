@@ -1,7 +1,7 @@
-#include "../include/Controller.h" 
+
 #include "../include/Reader.h" 
 
-void reader(char *FileName) 
+void reader(char *FileName, Server *S) 
 { 
   int count_lines;   
   int Servers;   
@@ -28,7 +28,9 @@ void reader(char *FileName)
     if(count_lines == 0){ 
     
       Servers = atoi(buff); 
-      printf("Servers: %d\n",Servers);
+      printf("Servers: %d\n",Servers); 
+      init_servers(S,Servers);
+      
     
     } 
     else{

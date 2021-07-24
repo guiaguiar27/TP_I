@@ -1,4 +1,4 @@
-#include "../include/Controller.h" 
+#include "../include/Controller.h"  
 
 
 
@@ -20,3 +20,8 @@ void send(){
 void flush(){ 
 
 } 
+
+void init_servers(Server *S,int num){ 
+    puts("Init Servers");
+    init_server(S,num);
+}
