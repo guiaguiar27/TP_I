@@ -1,6 +1,4 @@
-
-#include "Buffer.h" 
-
+#include "Buffer.h"
 
 typedef struct {
   Buffer Intern_Buffer;

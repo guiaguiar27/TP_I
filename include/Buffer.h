@@ -1,6 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h> 
-
+#include <string.h>
 /**  
  * \file include/Buffer.h 
  * \brief Buffer struct and Buffer class implementation. 
@@ -32,6 +32,8 @@ typedef struct {
  */ 
 void empity_buffer(Buffer *b, int id);
 
-void enqueue_buffer(Buffer *b, char *data); 
+void enqueue(Buffer *b, char *data); 
 
-Item  *dequeue(Buffer *b);
+Item  *dequeue(Buffer *b); 
+
+void show(Buffer *b);

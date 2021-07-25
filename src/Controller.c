@@ -22,6 +22,12 @@ void flush(){
 } 
 
 void init_servers(Server *S,int num){ 
-    puts("Init Servers");
-    init_server(S,num);
+    puts("Init Servers"); 
+    Buffer *Bex;  
+    
+    init_server(S,num); 
+    // Bex = 
+    // for(int i = 0 ; i < num; i++){  
+    //     S->node = S->node->next; 
+    // }
 }
