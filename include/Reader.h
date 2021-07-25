@@ -10,5 +10,5 @@ void reader(char *FileName, Server *S);
 
 /**  
 * Get only the commands
-**/ 
-void getsCommands(char *buff);
+**/  
+void getsCommands(char *buff, Server *ServerOP);

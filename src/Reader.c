@@ -43,7 +43,7 @@ void reader(char *FileName, Server *S)
   fclose(file);
 } 
 
-void getsCommands(char *buff){ 
+void getsCommands(char *buff, Server *ServerOP){ 
   int S, S2, I,aux; 
   short flag = 0;  
 
@@ -61,7 +61,7 @@ void getsCommands(char *buff){
     #ifdef DEBBUG
       puts(buff); 
     #endif // DEBBUG
-    info(S, buff);
+    info(S, buff,ServerOP);
   }  
 
   else if(strcmp(command,"WARN") ==0){ 
@@ -70,7 +70,7 @@ void getsCommands(char *buff){
     #if (DEBUG) 
       printf("S: %d, I: %d\n",S,I); 
     #endif 
-    warn(S,I); 
+    warn(S,I,ServerOP); 
   }  
   else if(strcmp(command,"TRAN") == 0){ 
     S = atoi(strsep(&buff,tokenSpace));   
@@ -78,25 +78,27 @@ void getsCommands(char *buff){
     #if (DEBUG) 
       printf("S: %d, S2: %d\n",S,S2); 
     #endif 
-    tran(S,S2);
+    tran(S,S2,ServerOP);
   } 
   else if(strcmp(command,"ERRO") == 0){ 
     S = atoi(strsep(&buff,tokenSpace));   
     #if (DEBUG) 
       printf("S: %d\n",S); 
     #endif 
-    erro(S);
+    erro(S,ServerOP);
   } 
   else if(strcmp(command,"SEND") == 0){  
     #if (DEBUG) 
-      printf("Send\n"); 
-    #endif 
+      printf("Send\n");
+    #endif  
+    send(ServerOP);;
 
   } 
   else if(strcmp(command,"FLUSH") == 0){ 
     #if (DEBUG) 
       printf("Flush\n"); 
     #endif 
+    flush(ServerOP); 
   }  
   
 }

@@ -2,22 +2,22 @@
 
 
 
-void info(int server, char *data){ 
+void info(int server, char *data,Server *S){ 
 
 } 
-void warn(int server, int position){ 
+void warn(int server, int position,Server *S){ 
 
 }
-void tran(int server_1, int server_2){ 
+void tran(int server_1, int server_2,Server *S){ 
 
 }
-void erro(int server_1){ 
+void erro(int server_1,Server *S){ 
 
 }
-void send(){ 
+void send(Server *S){ 
 
 }
-void flush(){ 
+void flush(Server *S){ 
 
 } 
 
