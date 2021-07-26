@@ -2,9 +2,7 @@
 
 int main(int argc, char *argv[]){ 
     
-    //reader(*argv[1]);  
-    Server *S = (Server*)malloc(sizeof(Server));  
-    printf("Rodando!\n");
-    reader("teste.txt",S);
+    Server *S = (Server*)malloc(sizeof(Server));   
+    reader(argv[1],S);
     return 0; 
 }   

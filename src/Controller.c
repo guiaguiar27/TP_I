@@ -5,11 +5,11 @@
 Executa o comando de info  
 */
 void info(int server, char *data,Server *S){   
-    printf("INFO\n");
     Tpointer Aux = find_node(server,S);
      
     enqueue(&(Aux->Intern_Buffer),data);    
     #if DEBUG 
+        printf("INFO\n");
         printf("Buffer id:%d\n",Aux->Intern_Buffer.id);  
         show(Aux->Intern_Buffer);
     #endif
@@ -18,12 +18,16 @@ void info(int server, char *data,Server *S){
     Executa o comando de warn  
 */ 
 void warn(int server, int position, Server *S){  
-    puts("WARN");
+    
     Tpointer aux = find_node(server,S);   
-    show(aux->Intern_Buffer); 
+    #if DEBUG
+        puts("WARN");
+        show(aux->Intern_Buffer); 
+    #endif 
     move_to_front(&(aux->Intern_Buffer),position); 
-    show(aux->Intern_Buffer); 
-
+    #if DEBUG 
+        show(aux->Intern_Buffer); 
+    #endif
 } 
 /* 
     Executa o comando de tran  
@@ -36,14 +40,12 @@ void tran(int server_1, int server_2,Server *S){
     Item *item = (Item*)malloc(sizeof(Item));
     
     for(int i = 0; i < tam; i++){  
-
-        dequeue(&(aux1->Intern_Buffer),item); 
-        
+        dequeue(&(aux1->Intern_Buffer),item);  
         enqueue(&(aux2->Intern_Buffer),item->data);  
-
-        
-    } 
-    show(aux2->Intern_Buffer);
+    }  
+    #if DEBUG 
+        show(aux2->Intern_Buffer); 
+    #endif
 } 
 
 /* 
@@ -53,11 +55,8 @@ void erro(int server_1,Server *S){
     
     printf("ERRO %d\n",server_1);  
     Tpointer aux = find_node(server_1,S);
-    
     show_buffer(aux->Intern_Buffer); 
-    
     int tam = aux->Intern_Buffer.size;  
-    
     Item *item = (Item*)malloc(sizeof(Item));  
     for(int i = 0; i < tam; i++){ 
          dequeue(&(aux->Intern_Buffer),item);
@@ -68,29 +67,27 @@ void erro(int server_1,Server *S){
  Executa o comando send    
 */
 void send(Server *S, int num){   
-   printf("SEND %d\n",num); 
-    
+    #if DEBUG
+        printf("SEND %d\n",num); 
+    #endif 
     Tpointer Aux = S->nodeF->next;
     Item *item = (Item*)malloc(sizeof(Item)); 
-    while (Aux != NULL) 
-    {   
+    while (Aux != NULL){   
         if(Aux->Intern_Buffer.size > 0){
-            dequeue(&(Aux->Intern_Buffer),item);  
-            printf("%s",item->data);
+            dequeue(&(Aux->Intern_Buffer),item); 
             enqueue(&(S->History),item->data); 
         }
         Aux = Aux ->next;  
-
-    }  
-    show(S->History);
-
+    }   
+    #if DEBUG
+        show(S->History);
+    #endif
 }  
 /* 
 Executa o comando de flush  
 */
 
 void flush(Server *S){  
-    
     if(S->History.size > 0)
         show_buffer(S->History); 
     Tpointer Aux = S->nodeF->next; 
@@ -111,7 +108,5 @@ void flush(Server *S){
 * Cada servidor tem uma fila de mensagens
 */
 void init_servers(Server *S,int num){ 
-    puts("Init Servers");
-    init_server(S,num); 
-    
+    init_server(S,num);  
 }

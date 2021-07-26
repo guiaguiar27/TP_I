@@ -24,8 +24,11 @@ void add_buffer(Server *S, int id){
     S->nodeL = S->nodeL->next; 
     empity_buffer(&S->nodeL->Intern_Buffer,id);
     S->nodeL->next = NULL;
-}
+} 
 
+/* 
+Encontra um nó especifico do servidor de acordo com seu id 
+*/
 Tpointer find_node(int id, Server *S){ 
     Tpointer Aux;
     Aux = S->nodeF-> next;
@@ -38,28 +41,5 @@ Tpointer find_node(int id, Server *S){
     return NULL;
 }
 
-void show_servers(Server *S);
 
-
-/* 
-    Função usada para enviar e preencher o histórico de envio 
-    (ainda não finalizada )
-*/
-void pick_to_send(Server *S, Buffer *history){ 
-    Tpointer Aux;
-    Aux = S->nodeF-> next; 
-    Item *i; 
-    while(Aux != NULL) 
-    {   
-        if(Aux->Intern_Buffer.size > 0){
-            dequeue(&(Aux->Intern_Buffer), i); 
-            enqueue(&S->History,i->data); 
-        } 
-        Aux = Aux -> next; 
-       
-    } 
-      
-    
-
-}
 

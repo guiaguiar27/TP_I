@@ -26,9 +26,7 @@ void init_server(Server *S, int num);
 
 void add_buffer(Server *S, int id);
 
-//Buffer *remove_buffer(Server **S); 
 Tpointer find_node(int id, Server *S); 
 
-void show_servers(Server *S);
 
-void pick_to_send(Server *S, Buffer *history);
+void to_send(Server *S, Buffer *history);

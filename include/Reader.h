@@ -1,7 +1,5 @@
 #include "../include/Controller.h" 
 #define MAX_CHAR_COMMAND 256 
-#define DEBUG 1
-
 /**  
 * function to commands reading
 **/ 
