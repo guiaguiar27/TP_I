@@ -37,3 +37,4 @@ void dequeue(Buffer *b, Item *Item);
 void show(Buffer b);
 
 void  move_to_front(Buffer *b, int position);
+void show_buffer(Buffer b);

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>  
 #include "Server.h" 
-
+#define DEBUG 1
 /** 
 * controller functions 
 **/   

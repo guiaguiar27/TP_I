@@ -13,7 +13,8 @@ typedef struct Tcell{
 
 typedef struct Server{
   Tpointer nodeF, nodeL; 
-  int Server_id;
+  int Server_id; 
+  Buffer History; 
 } Server;
 
 
@@ -30,4 +31,4 @@ Tpointer find_node(int id, Server *S);
 
 void show_servers(Server *S);
 
-void pick_to_send(Server *S, char *history);
+void pick_to_send(Server *S, Buffer *history);

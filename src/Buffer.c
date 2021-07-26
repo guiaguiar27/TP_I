@@ -18,12 +18,13 @@ void empity_buffer(Buffer *b, int id ){
 Enfileira o buffer   
 */ 
 void enqueue(Buffer *b, char *data){  
-
+    
     b->tail->next = (Fpointer)malloc(sizeof(Fcell));
     b->tail = b->tail->next; 
     
     b->tail->item.data = (char*)malloc(sizeof(char));
-    strcpy(b->tail->item.data,data);  
+    
+    strcpy(b->tail->item.data,data);
     b->tail->next = NULL; 
     b->tail->Position = b->size; 
     b->size++; 
@@ -37,23 +38,25 @@ Desenfileira o buffer
 
 
 void dequeue(Buffer *b, Item *Item){  
-    Fpointer aux;  
-    aux = b->head; 
-    // atencao aui caso a remocao não ocorra bem
+    Fpointer aux;   
+    aux = b->head;  
     b->head = b->head->next; 
     *Item = b->head->item;
     b->size--;
-    free(aux);     
-    
+    free(aux); 
+
+  
 
     
 
 } 
 /* 
     Imprime a fila do buffer de um dado servidor  
-    Cada fila pode conter diversas células.     
+    Cada fila pode conter diversas células.  
+    Exibe o tamanho das filas    
 */
-void show(Buffer b){ 
+void show(Buffer b){  
+    
     Fpointer aux;
     printf("Size: %d\n",b.size);
     
@@ -65,32 +68,41 @@ void show(Buffer b){
     }
     
 
-} 
+}  
+/* 
+Exibe o conteudo dos buffers sem informações adicionais  
+*/
+void show_buffer(Buffer b){  
+
+    Fpointer aux;
+    aux = b.head->next;  
+    while(aux!=NULL){  
+        printf("%s\n",aux->item.data);
+        aux = aux->next;
+    }
+}
 /* 
     Função utilizada no warning   
     coleta o item na ultima posição trocando com o item da primeira posição.  
+    Apenas copia o conteudo das celulas, não trabalha nos ponteiros
+*/ 
 
-
-
-*/
 void  move_to_front(Buffer *b, int position){ 
     
     Fpointer Find = b->head->next;    
-    Fpointer aux;  
+    char *aux = (char*)malloc(sizeof(char)); 
     while(Find != NULL)  
     {  
         if(Find->Position == position) break;  
         Find = Find->next;
-    } 
+    }   
 
-    aux = b->head;  
-    Item *Item = &(b->head->item);
-    b->head = Find;   
-    enqueue(b,Item->data);  
-    b->size -= 2; 
-    free(Find);
-    free(aux);    
-
+    strcpy(aux,b->head->next->item.data);
+    printf("%s",aux);
+    strcpy(b->head->next->item.data,Find->item.data);
+    strcpy(Find->item.data,aux);   
+   
+    
     
    
 

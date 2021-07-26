@@ -40,7 +40,10 @@ void reader(char *FileName, Server *S)
 
   fclose(file);
 } 
-
+ 
+/* 
+Interpreta os comandos e convoca as funções equivalentes.    
+*/
 void getsCommands(char *buff, Server *ServerOP, int QtdServers){ 
   int S, S2, I,aux; 
   short flag = 0;  
@@ -56,38 +59,29 @@ void getsCommands(char *buff, Server *ServerOP, int QtdServers){
   strcpy(command,slot);
   if(strcmp(command,"INFO") ==0){  
     S = atoi(strsep(&buff,tokenSpace)); 
-    #ifdef DEBBUG
-      puts(buff); 
-    #endif // DEBBUG
+    
     info(S, buff,ServerOP);
   }  
 
   if(strcmp(command,"WARN") ==0){ 
     S = atoi(strsep(&buff,tokenSpace));  
     I = atoi(strsep(&buff,tokenSpace)); 
-    #if (DEBUG) 
-      printf("S: %d, I: %d\n",S,I); 
-    #endif 
+    
     warn(S,I,ServerOP); 
   }  
   if(strcmp(command,"TRAN") == 0){ 
     S = atoi(strsep(&buff,tokenSpace));   
     S2 = atoi(strsep(&buff,tokenSpace)); 
-    #if (DEBUG) 
-      printf("S: %d, S2: %d\n",S,S2); 
-    #endif 
     tran(S,S2,ServerOP);
   } 
   if(strcmp(command,"ERRO") == 0){ 
     S = atoi(strsep(&buff,tokenSpace));   
-    #if (DEBUG) 
-      printf("S: %d\n",S); 
-    #endif 
+    
     erro(S,ServerOP);
   } 
   if(strcmp(command,"SEND") == 0){  
     
-      printf("Send\n");
+    printf("Send\n");
      
     send(ServerOP,QtdServers);
 
