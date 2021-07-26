@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>  
 #include "Server.h" 
-#define DEBUG 0
+
 /** 
 * controller functions 
 **/   
@@ -28,7 +28,7 @@ void erro(int server_1,Server *S);
 Quando o controlador central executa um comando ‘SEND’, 
 deve-se percorrer os buffers de todos os servidores enviando os dados da primeira posição de cada um, e removendo-os do buffer.
 **/ 
-void send(Server *S); 
+void send(Server *S,int num); 
 /** 
  Ao executar um comando do tipo ‘FLUSH’, deve-se imprimir no terminal o histórico de consciências na ordem que foram enviadas. 
   Além disso, deve-se também imprimir no terminal,  

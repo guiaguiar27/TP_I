@@ -27,14 +27,12 @@ void reader(char *FileName, Server *S)
     
     if(count_lines == 0){ 
     
-      Servers = atoi(buff); 
-      printf("Servers: %d\n",Servers); 
-      init_servers(S,Servers);
-      
+      Servers = atoi(buff);  
+      init_servers(S,Servers); 
     
     } 
     else{
-      getsCommands(buff);
+      getsCommands(buff,S,Servers);
     }
 
     count_lines++;  
@@ -43,7 +41,7 @@ void reader(char *FileName, Server *S)
   fclose(file);
 } 
 
-void getsCommands(char *buff, Server *ServerOP){ 
+void getsCommands(char *buff, Server *ServerOP, int QtdServers){ 
   int S, S2, I,aux; 
   short flag = 0;  
 
@@ -57,14 +55,14 @@ void getsCommands(char *buff, Server *ServerOP){
   slot = strsep(&buff,tokenSpace);  
   strcpy(command,slot);
   if(strcmp(command,"INFO") ==0){  
-    S = atoi(strsep(&buff,tokenSpace));  
+    S = atoi(strsep(&buff,tokenSpace)); 
     #ifdef DEBBUG
       puts(buff); 
     #endif // DEBBUG
     info(S, buff,ServerOP);
   }  
 
-  else if(strcmp(command,"WARN") ==0){ 
+  if(strcmp(command,"WARN") ==0){ 
     S = atoi(strsep(&buff,tokenSpace));  
     I = atoi(strsep(&buff,tokenSpace)); 
     #if (DEBUG) 
@@ -72,7 +70,7 @@ void getsCommands(char *buff, Server *ServerOP){
     #endif 
     warn(S,I,ServerOP); 
   }  
-  else if(strcmp(command,"TRAN") == 0){ 
+  if(strcmp(command,"TRAN") == 0){ 
     S = atoi(strsep(&buff,tokenSpace));   
     S2 = atoi(strsep(&buff,tokenSpace)); 
     #if (DEBUG) 
@@ -80,21 +78,21 @@ void getsCommands(char *buff, Server *ServerOP){
     #endif 
     tran(S,S2,ServerOP);
   } 
-  else if(strcmp(command,"ERRO") == 0){ 
+  if(strcmp(command,"ERRO") == 0){ 
     S = atoi(strsep(&buff,tokenSpace));   
     #if (DEBUG) 
       printf("S: %d\n",S); 
     #endif 
     erro(S,ServerOP);
   } 
-  else if(strcmp(command,"SEND") == 0){  
-    #if (DEBUG) 
+  if(strcmp(command,"SEND") == 0){  
+    
       printf("Send\n");
-    #endif  
-    send(ServerOP);;
+     
+    send(ServerOP,QtdServers);
 
   } 
-  else if(strcmp(command,"FLUSH") == 0){ 
+  if(strcmp(command,"FLUSH") == 0){ 
     #if (DEBUG) 
       printf("Flush\n"); 
     #endif 

@@ -6,34 +6,34 @@
  * \brief Buffer struct and Buffer class implementation. 
  **/ 
 
-typedef struct Item{
-    char *data;
-}Item;  
+typedef struct Fcell *Fpointer;
 
-typedef struct Fcell *Fpointer;  
-typedef struct Fcell{ 
-    Item item; 
-    Fpointer next; 
-    int Position;
-}Fcell;  
+typedef struct Item {
+  char  *data;
+}Item;
 
-typedef struct {  
-    int id; 
-    Fpointer head; 
-    Fpointer tail;   
+typedef struct Fcell {
+  Item item;
+  Fpointer next; 
+  int Position;
+}Fcell;
+
+typedef struct Buffer{
+    Fpointer head, tail;  
     int size; 
-}Buffer;   
-
-
+    int id;
+}Buffer;
 
 
 /** 
  * \brief Buffer implementation.
  */ 
-void empity_buffer(Buffer *b, int id);
+void empity_buffer(Buffer *b, int id );
 
 void enqueue(Buffer *b, char *data); 
 
-Item  *dequeue(Buffer *b); 
+void dequeue(Buffer *b, Item *Item); 
 
-void show(Buffer *b);
+void show(Buffer b);
+
+void  move_to_front(Buffer *b, int position);
