@@ -23,7 +23,7 @@ typedef struct Server{
  **/
 void init_server(Server *S, int num);
 
-void add_buffer(Server *S, Buffer *new_buffer, int id);
+void add_buffer(Server *S, int id);
 
 //Buffer *remove_buffer(Server **S); 
 Tpointer find_node(int id, Server *S); 

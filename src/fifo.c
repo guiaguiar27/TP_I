@@ -85,10 +85,12 @@ int main(int argc, char *argv[])
       Enfileira(item, &fila);
       printf("Enfileirou: %d \n", item.Chave);
     }
+  Imprime(fila);
   /*Desenfieleira cada chave */
   for (i = 0;i < MAX; i++)
     { Desenfileira(&fila, &item);
       printf("Desenfileirou: %d \n", item.Chave);
-    }
+    } 
+
   return 0;
 }

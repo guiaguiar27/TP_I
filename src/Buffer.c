@@ -20,9 +20,10 @@ Enfileira o buffer
 void enqueue(Buffer *b, char *data){  
 
     b->tail->next = (Fpointer)malloc(sizeof(Fcell));
-    b->tail = b->tail->next;
-    b->tail->item.data = (char *)malloc(sizeof(char));
-    b->tail->item.data = data;  
+    b->tail = b->tail->next; 
+    
+    b->tail->item.data = (char*)malloc(sizeof(char));
+    strcpy(b->tail->item.data,data);  
     b->tail->next = NULL; 
     b->tail->Position = b->size; 
     b->size++; 
@@ -30,7 +31,6 @@ void enqueue(Buffer *b, char *data){
     
 
 }  
-
 /* 
 Desenfileira o buffer   
 */ 
@@ -42,7 +42,9 @@ void dequeue(Buffer *b, Item *Item){
     // atencao aui caso a remocao não ocorra bem
     b->head = b->head->next; 
     *Item = b->head->item;
-    free(aux);    
+    b->size--;
+    free(aux);     
+    
 
     
 
@@ -61,20 +63,35 @@ void show(Buffer b){
         printf("Position: [%d] = %s\n",aux->Position,aux->item.data);
         aux = aux->next;
     }
- 
+    
+
 } 
 /* 
-    Função utilizada no warning  
+    Função utilizada no warning   
+    coleta o item na ultima posição trocando com o item da primeira posição.  
+
+
 
 */
 void  move_to_front(Buffer *b, int position){ 
-    printf("MOVE\n");
-    Fpointer Aux = b->head->next; 
-    while (Aux != NULL)  
+    
+    Fpointer Find = b->head->next;    
+    Fpointer aux;  
+    while(Find != NULL)  
     {  
-        printf("%d\n", Aux->Position);
-        Aux = Aux->next;
-    }
+        if(Find->Position == position) break;  
+        Find = Find->next;
+    } 
+
+    aux = b->head;  
+    Item *Item = &(b->head->item);
+    b->head = Find;   
+    enqueue(b,Item->data);  
+    b->size -= 2; 
+    free(Find);
+    free(aux);    
+
+    
    
 
 }
