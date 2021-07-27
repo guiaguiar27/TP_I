@@ -40,15 +40,21 @@ void getsCommands(char *buff, Server *ServerOP, int QtdServers){
   char *tokenQuote =  "\"";
   char *slot = malloc(sizeof(char)); 
   char *data = malloc(sizeof(char)); 
-  char *command = malloc(sizeof(char)); 
+  char *command = malloc(sizeof(char));   
+  char *final; 
+  int i, j;
+
 
 
   slot = strsep(&buff,tokenSpace);  
   strcpy(command,slot);
 
   if(strcmp(command,"INFO") ==0){  
-    S = atoi(strsep(&buff,tokenSpace)); 
-    info(S, buff,ServerOP);
+    S = atoi(strsep(&buff,tokenSpace));   
+    final = malloc(strlen(buff) + 1);  
+    i =strlen(buff)-3; 
+    strncpy(final, buff+1,i);
+    info(S, final,ServerOP);
   }  
   if(strcmp(command,"WARN") ==0){ 
     S = atoi(strsep(&buff,tokenSpace));  
